@@ -11,7 +11,9 @@
       $sql = "SELECT * from Member where MemberID = $user";
       $result = mysqli_query($conn, $sql);
 
-      if(mysqli_num_rows($result) == 0){
+        if ($result == false) {
+          echo "Unknown User, please try again.";
+        }elseif(mysqli_num_rows($result) == 0){
           echo "Unknown User, please try again.";
         }else{
         $id = mysqli_fetch_assoc($result);
@@ -21,7 +23,6 @@
         $_SESSION['id'] = $id;
         header('Location: account.php');
       }
-
     }
   }
 
@@ -33,6 +34,7 @@
 <html lang="en" dir="ltr">
 <link rel="stylesheet" href="css/index.css" type="text/css">
 <link rel="stylesheet" href="css/header.css" type="text/css">
+<link rel="stylesheet" href="css/login.css" type="text/css">
 <head>
   <meta charset="utf-8">
   <title>Library Catalogue Login</title>
@@ -55,13 +57,11 @@
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
     <div>
       <label for="user">Username</label>
-      <input type="text" placeholder="Student Number" name="user">
+      <input type="text" placeholder="Student Number" name="user" id="user">
     </div>
     <button type="submit" name="login">Login</button>
   </form>
 
 </body>
-
-<script src="login.js" charset="utf-8"></script>
 
 </html>
