@@ -5,8 +5,23 @@
 
   $account = $_SESSION['id'];
 
+  $sqlfine = 'INSERT INTO Fine(IssueID, BookID, MemberID, Amount) SELECT IssueID, BookID, MemberID, 0.5 from Issue where ExpiryDate < CURRENT_DATE()';
+  $update = mysqli_query($conn, $sqlfine);
 
+  if (!$update) {
+    echo "Query Failed";
+  }else{
+    echo "Query Complete";
+}
+  $sqldelete = 'DELETE FROM Issue where ExpiryDate < CURRENT_DATE()';
+  $update2 = mysqli_query($conn, $sqldelete);
 
+  if (!$update2) {
+    echo "Query Failed";
+    echo "error " . mysqli_error($conn);
+  }else{
+    echo "Issued Book Moved successfully";
+}
  ?>
 
 <!DOCTYPE html>
@@ -75,7 +90,6 @@
         <?php echo htmlspecialchars($loan['Title']); ?>
       </p>
 
-
       <label>ISBN:</label>
       <p>
         <?php echo htmlspecialchars($loan['ISBN']); ?>
@@ -92,7 +106,7 @@
       </p>
 
       <?php }?>
-      <?php } ?>
+      <?php }?>
       <?php }?>
 
     </div>
@@ -106,24 +120,66 @@
 
       <?php
 
-        $sql2 = "SELECT * FROM Fine WHERE MemberID='".$account['MemberID']."' ";
+        $sql2 = "SELECT f.BookID, f.MemberID, f.Amount, b.BookID, b.ISBN from Fine f, Book b where f.BookID = b.BookID and f.MemberID = '".$account['MemberID']."' ";
         $result2 = mysqli_query($conn, $sql2);
 
         if (mysqli_num_rows($result2) == 0) {
           echo "You have no Fines.";
         } else{
           $fines = mysqli_fetch_all($result2, MYSQLI_ASSOC);
+          mysqli_free_result($result2);
           foreach ($fines as $afine) {
-          if(isset($fine['BookID'])){?>
+          if(isset($afine['BookID'])){?>
+
+            <label>Book Title:</label>
+            <p>
+              <?php echo htmlspecialchars($afine['BookID']); ?>
+            </p>
+
+            <label>ISBN:</label>
+            <p>
+              <?php echo htmlspecialchars($afine['ISBN']); ?>
+            </p>
+
+            <label>Issue Date:</label>
+            <p>
+              <?php echo htmlspecialchars($afine['Amount']); ?>
+            </p>
+
+            <label>Return By:</label>
+            <p>
+              <?php echo htmlspecialchars($afine['ExpiryDate']); ?>
+            </p>
+
+      <?php }
+              }
+                }?>
+    </div>
+  </div>
+
+  <div id="Reservations" class="tabcontent">
+    <h5>Reservations</h5>
+
+    <div class="row">
+
+      <?php
+
+        $sql3 = "SELECT * FROM Reservation WHERE MemberID='".$account['MemberID']."' ";
+        $result3 = mysqli_query($conn, $sql3);
+
+        if (mysqli_num_rows($result3) == 0) {
+          echo "You have no Reservations.";
+        } else{
+          $reservations = mysqli_fetch_all($result3, MYSQLI_ASSOC);
+          mysqli_free_result($result3);
+          foreach ($reservations as $areservation) {
+          if(isset($areservation['BookID'])){?>
 
       <div class="s1">
-        <?php echo htmlspecialchars($loan['BookID']); ?>
+        <?php echo htmlspecialchars($areservation['BookID']); ?>
       </div>
       <div class="s2">
-        <?php echo htmlspecialchars($loan['IssueID']); ?>
-      </div>
-      <div class="s3">
-        <?php echo htmlspecialchars($loan['Amount']); ?>
+        <?php echo htmlspecialchars($areservation['ResExpire']); ?>
       </div>
 
       <?php }
@@ -147,6 +203,7 @@
           echo "You have no returns.";
         } else{
           $returns = mysqli_fetch_all($result4, MYSQLI_ASSOC);
+          mysqli_free_result($result4);
           foreach ($returns as $return) {
           if(isset($return['BookID'])){?>
 
