@@ -4,9 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>Library Catalogue - Accessibility</title>
-  <link rel="stylesheet" href="css/index.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
   <link rel="stylesheet" href="css/access.css" type="text/css">
-  <link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
 
 <body>

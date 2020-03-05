@@ -32,8 +32,7 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<link rel="stylesheet" href="css/index.css" type="text/css">
-<link rel="stylesheet" href="css/header.css" type="text/css">
+<link rel="stylesheet" href="css/main.css" type="text/css">
 <link rel="stylesheet" href="css/login.css" type="text/css">
 <head>
   <meta charset="utf-8">
