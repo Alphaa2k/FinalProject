@@ -131,25 +131,25 @@
           foreach ($fines as $afine) {
           if(isset($afine['BookID'])){?>
 
-            <label>Book Title:</label>
-            <p>
-              <?php echo htmlspecialchars($afine['BookID']); ?>
-            </p>
+      <label>Book Title:</label>
+      <p>
+        <?php echo htmlspecialchars($afine['BookID']); ?>
+      </p>
 
-            <label>ISBN:</label>
-            <p>
-              <?php echo htmlspecialchars($afine['ISBN']); ?>
-            </p>
+      <label>ISBN:</label>
+      <p>
+        <?php echo htmlspecialchars($afine['ISBN']); ?>
+      </p>
 
-            <label>Issue Date:</label>
-            <p>
-              <?php echo htmlspecialchars($afine['Amount']); ?>
-            </p>
+      <label>Issue Date:</label>
+      <p>
+        <?php echo htmlspecialchars($afine['Amount']); ?>
+      </p>
 
-            <label>Return By:</label>
-            <p>
-              <?php echo htmlspecialchars($afine['ExpiryDate']); ?>
-            </p>
+      <label>Return By:</label>
+      <p>
+        <?php echo htmlspecialchars($afine['ExpiryDate']); ?>
+      </p>
 
       <?php }
               }
