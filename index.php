@@ -7,7 +7,7 @@
       echo "<p>This field cannot be left empty.</p>";
     }else{
       $schqry = mysqli_real_escape_string($conn, $_POST['search']);
-      $sql = "SELECT b.Title, b.ISBN, b.Genre, b.Paperback, b.Published, b.Description, a.fName, a.lName from `author` a JOIN `book` b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%' OR a.fname LIKE '%$schqry%' OR a.lname LIKE '%$schqry%'";
+      $sql = "SELECT b.BookID, b.Title, b.ISBN, b.Genre, b.Paperback, b.Published, b.Description, a.fName, a.lName from `author` a JOIN `book` b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%'";
       $query = mysqli_query($conn, $sql);
       $resultsnum = mysqli_num_rows($query);
 
@@ -55,9 +55,9 @@
 
   <h1>Library Catalogue</h1>
 
-  <div>
+  <div class="searchcontent">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-      <input type="input" class="searchbar" name="search" placeholder="Search the Catalogue">
+      <input type="input" class="searchbar" name="search" placeholder="Search Books in the Catalogue">
       <button type="submit" name="searchbtn" id="search">Search</button>
 
       <button type="button" name="button" id="Adv">Advanced Search</button>
