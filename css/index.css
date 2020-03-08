@@ -8,6 +8,10 @@ h1, h2, h3{
   width: 60%;
 }
 
+.searchcontent{
+  text-align: center;
+}
+
 #Adv{
   display: block;
   margin: 10px auto auto auto;

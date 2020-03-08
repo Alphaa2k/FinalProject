@@ -32,7 +32,6 @@
   <title>Your Account</title>
   <link rel="stylesheet" href="css/index.css" type="text/css">
   <link rel="stylesheet" href="css/account.css" type="text/css">
-  <link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
 
 <body>
