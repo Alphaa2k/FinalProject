@@ -49,70 +49,90 @@
         }
       }
 ?>
-
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
+  <html lang="en" dir="ltr">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/search.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
-    <?php echo "Search Results for ". $schqry;  ?>
+    <?php echo "Search Results for ". $schqry;?>
   </title>
-  <link rel="stylesheet" href="css/main.css" type="text/css">
-  <link rel="stylesheet" href="css/search.css" type="text/css">
 </head>
 
 <body>
 
-  <header>
-    <div class="nav">
-      <a href="index.php">Home</a>
-      <a href="accessibility.php">Accessibility</a>
-      <a href="feedback.php">Feedback</a>
-      <a href="#LibraryWeb">Library Website</a>
-      <a href="#contact">Contact Us</a>
-      <a href="#help">Help</a>
-      <a href="login.php" id="account">My Account</a>
+  <nav>
+    <div class="nav-wrapper purple darken-4">
+      <!-- <a href="#!" class="brand-logo center">Logo</a> -->
+      <ul class="left hide-on-med-and-down">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="accessibility.php">Accessibility</a></li>
+        <li><a href="feedback.php">Feedback</a></li>
+        <li><a href="#LibraryWeb">Library Website</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#help">Help</a></li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="login.php" id="account">My Account</a></li>
+      </ul>
     </div>
-  </header>
+  </nav>
 
-  <!-- Side Content -->
-  <div class="sidecontent">
-    <h5 class="sidetitle">Search Filters</h5>
 
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 
-      <div class="column">
-        <label>Paperback</label>
-        <select class="section">
-          <option>Select a filter...</option>
-          <option value="Y">Yes</option>
-          <option value="N">No</option>
-        </select>
-      </div>
+  <div class="row">
+    <div class="col s3">
+      <!-- Grey navigation panel -->
+      <h5 class="sidetitle">Search Filters</h5>
 
-      <div class="column">
-        <label>Author</label>
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <div class="divider"></div>
         <div class="section">
+          <h5>Paperback</h5>
+          <p>
+            <label>
+              <input class="with-gap" name="group1" type="radio" value="Y" />
+              <span>Yes</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input class="with-gap" name="group1" type="radio" value="N" />
+              <span>No</span>
+            </label>
+          </p>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+          <h5>Author</h5>
           <label class="radio-inline">
-          <?php
+            <?php
               $sqlauthor = "SELECT DISTINCT fName, lName from `author` JOIN `book` on `author`.AUID = `book`.AUID where `book`.Title LIKE '%$schqry%' OR `author`.fName LIKE '%$schqry%' OR `author`.`lName` LIKE '%$schqry%'";
               $query = mysqli_query($conn, $sqlauthor);
               $authors = mysqli_fetch_all($query, MYSQLI_ASSOC);
               mysqli_free_result($query);
               foreach($authors as $author) {
               if(isset($author['fName'])){ ?>
-          <input type="radio" name="author" value="<?php echo htmlspecialchars($author['fName']) . ' ' . htmlspecialchars($author['lName']) ?>">
-          <?php echo htmlspecialchars($author['fName']) . " " . htmlspecialchars($author['lName']) ?>
-        </label>
-          <?php }
-  }?>
-        </div>
-      </div>
 
-      <div class="column">
-        <label>Genre</label>
+                <p>
+                  <label>
+                    <input class="with-gap" name="group2" type="radio" value="<?php echo htmlspecialchars($author['fName']) . " " . htmlspecialchars($author['lName']) ?>"/>
+                      <span><?php echo htmlspecialchars($author['fName']) . " " . htmlspecialchars($author['lName']) ?></span>
+                  </label>
+                </p>
+
+          <?php }
+                }?>
+        </div>
+        <div class="divider"></div>
         <div class="section">
+          <h5>Genre</h5>
           <?php
             $sqlgenre = "SELECT DISTINCT b.Genre from `book` b JOIN `author` a on b.`AUID` = a.`AUID` where b.title LIKE '%$schqry%' OR a.fname LIKE '%$schqry%' OR a.lname LIKE '%$schqry%'";
             $query = mysqli_query($conn, $sqlgenre);
@@ -126,71 +146,58 @@
           <?php }
           }?>
           </select>
+
         </div>
-      </div>
 
-      <div class="column">
-        <label>Year</label>
+        <div class="divider"></div>
         <div class="section">
-
-          <?php
+          <h5>Year</h5>
+          <div data-role="form-price-range-filter">
+            <?php
               $sqlminyear = "SELECT DISTINCT MIN(Published) from `book` JOIN `author` on `book`.AUID = `Author`.AUID where `book`.Title LIKE '%$schqry%' OR `author`.fName LIKE '%$schqry%' OR `author`.`lName` LIKE '%$schqry%'";
               $query1 = mysqli_query($conn, $sqlminyear);
-              $minyear = mysqli_fetch_row($query1);
+              $min = mysqli_fetch_row($query1);
               $sqlmaxyear = "SELECT DISTINCT MAX(Published) from `book` JOIN `author` on `book`.AUID = `Author`.AUID where `book`.Title LIKE '%$schqry%' OR `author`.fName LIKE '%$schqry%' OR `author`.`lName` LIKE '%$schqry%'";
               $query2 = mysqli_query($conn, $sqlmaxyear);
-              $maxyear = mysqli_fetch_row($query2);?>
-
-          <input type="range" min"<?php echo htmlspecialchars($minyear[0]) ?>" max ="
-          <?php echo htmlspecialchars($maxyear[0]) ?>">
+              $max = mysqli_fetch_row($query2);?>
+          </div>
+          <button type="submit" name="apply">Apply Filters</button>
         </div>
-      </div>
+      </form>
+    </div>
 
-      <div class="column">
-        <button type="submit" name="apply">Apply Filters</button>
-      </div>
+    <div class="col s9">
+      <div class="content">
+        <h2>
+          <?php echo "Your search query returned ".$resultsnum." results."; ?>
+        </h2>
 
-    </form>
-
-
-  </div>
-
-  <!-- End Side Content -->
-
-  <div class="content">
-    <h2>
-      <?php echo "Your search query returned ".$resultsnum." results."; ?>
-    </h2>
-
-
-
-    <?php
+        <?php
 
   if(is_array($results)){
 
       foreach ($results as $result) {
       if(isset($result['BookID'])){ ?>
 
-    <div class="row">
-      <h4><a href="details.php?id=<?php echo $result['BookID'];?>">
-        <?php echo htmlspecialchars($result['Title']);?>
-      </a></h4>
-      <h5><i>
-          <?php echo "By " . htmlspecialchars($result['fName']) . " " . htmlspecialchars($result['lName']);; ?></i></h5>
-      <p>
-        <?php echo "ISBN: " . htmlspecialchars($result['ISBN']); ?>
-      </p>
-      <p>
-        <?php echo "[" . htmlspecialchars($result['Published']) . "]"; ?>
-      </p>
+        <h4><a href="details.php?id=<?php echo $result['BookID'];?>">
+            <?php echo htmlspecialchars($result['Title']);?>
+          </a></h4>
+        <h5><i>
+            <?php echo "By " . htmlspecialchars($result['fName']) . " " . htmlspecialchars($result['lName']);; ?></i></h5>
+        <p>
+          <?php echo "ISBN: " . htmlspecialchars($result['ISBN']); ?>
+        </p>
+        <p>
+          <?php echo "[" . htmlspecialchars($result['Published']) . "]"; ?>
+        </p>
 
-      <?php  }
+        <?php  }
     }
 }
 ?>
+        </div>
+      </div>
     </div>
-
-  </div>
 
 </body>
 

@@ -34,24 +34,55 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
   <title>University of Portsmouth - Library Catalogue</title>
-  <link rel="stylesheet" href="css/index.css" type="text/css">
-  <link rel="stylesheet" href="css/main.css" type="text/css">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
-  <header>
-    <div class="nav">
-      <a class="live">Home</a>
-      <a href="accessibility.php">Accessibility</a>
-      <a href="feedback.php">Feedback</a>
-      <a href="#LibraryWeb">Library Website</a>
-      <a href="#contact">Contact Us</a>
-      <a href="#help">Help</a>
-      <a href="login.php" id="account">My Account</a>
-    </div>
-  </header>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+var elems = document.querySelectorAll('.sidenav');
+var instances = M.Sidenav.init(elems, {});
+});
+</script>
+
+<nav>
+  <div class="nav-wrapper purple darken-4">
+    <!-- <a href="#!" class="brand-logo center">Logo</a> -->
+    <ul class="left hide-on-med-and-down">
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <li><a class="active">Home</a></li>
+      <li><a href="accessibility.php">Accessibility</a></li>
+      <li><a href="feedback.php">Feedback</a></li>
+      <li><a href="#LibraryWeb">Library Website</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#help">Help</a></li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="login.php" id="account">My Account</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+  <li><a class="active">Home</a></li>
+  <li><a href="accessibility.php">Accessibility</a></li>
+  <li><a href="feedback.php">Feedback</a></li>
+  <li><a href="#LibraryWeb">Library Website</a></li>
+  <li><a href="#contact">Contact Us</a></li>
+  <li><a href="#help">Help</a></li>
+  <li><a href="login.php" id="account">My Account</a></li>
+ </ul>
+
+
+<div class="container">
+
 
   <h1>Library Catalogue</h1>
 
@@ -65,19 +96,28 @@
   </div>
 
   <footer>
-    <h2>Opening Times</h2>
+    <h4>Opening Times</h4>
+    <div class="row">
 
-    <h3>Library:</h3>
-    <li>Monday to Sunday: 24 Hours</li>
+    <div class="col s4">
+      <h6>Library:</h6>
+      <p>Monday to Sunday: 24 Hours</p>
+    </div>
 
-    <h3>Library Help Desk:</h3>
-    <li>Monday to Friday: 9am - 9pm</li>
-    <li>Saturday and Sunday: 10am - 4pm</li>
+    <div class="col s4">
+      <h6>Library Help Desk:</h6>
+      <p>Monday to Friday: 9am - 9pm</p>
+      <p>Saturday and Sunday: 10am - 4pm</p>
+    </div>
 
-    <h3>IT Help Desk:</h3>
-    <li>Monday to Sunday: 8am - Midnight</li>
+    <div class="col s4">
+      <h6>IT Help Desk:</h6>
+      <li>Monday to Sunday: 8am - Midnight</li>
+    </div>
 
+      </div>
   </footer>
+    </div>
 </body>
 
 </html>

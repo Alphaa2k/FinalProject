@@ -4,36 +4,60 @@
 <head>
   <meta charset="utf-8">
   <title>Library Catalogue - Accessibility</title>
-  <link rel="stylesheet" href="css/main.css" type="text/css">
-  <link rel="stylesheet" href="css/access.css" type="text/css">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/access.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
-  <header>
-    <div class="nav">
-      <a href="index.php">Home</a>
-      <a class="live">Accessibility</a>
-      <a href="feedback.php">Feedback</a>
-      <a href="#LibraryWeb">Library Website</a>
-      <a href="#contact">Contact Us</a>
-      <a href="#help">Help</a>
-      <a href="login.php" id="account">My Account</a>
-    </div>
-  </header>
+<nav>
+  <div class="nav-wrapper purple darken-4">
+    <!-- <a href="#!" class="brand-logo center">Logo</a> -->
+    <ul class="left hide-on-med-and-down">
+      <li><a href="index.php">Home</a></li>
+      <li class ="active"><a>Accessibility</a></li>
+      <li><a href="feedback.php">Feedback</a></li>
+      <li><a href="#LibraryWeb">Library Website</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#help">Help</a></li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="login.php" id="account">My Account</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <h3>Library Catalogue Accessibility</h3>
 
-  <div class="sidecontent">
+<div class="row">
+
+  <div class="col s3">
     <h5>Table of Contents</h5>
-    <a href="#committedtoaccessibility">Committed to Accessibility</a>
-    <a href="#skiptocontent">'Skip to Content'</a>
-    <a href="#textsizeandstyle">Text Size and Style</a>
-    <a href="#movingaround">Moving Around</a>
-    <a href="#assistivetechnology">Assistive Technology</a>
-    <a href="#feedback">Feedback</a>
+    <div class="section">
+      <a href="#committedtoaccessibility">Committed to Accessibility</a>
+    </div>
+    <div class="section">
+      <a href="#skiptocontent">'Skip to Content'</a>
+    </div>
+    <div class="section">
+      <a href="#textsizeandstyle">Text Size and Style</a>
+    </div>
+    <div class="section">
+      <a href="#movingaround">Moving Around</a>
+    </div>
+    <div class="section">
+      <a href="#assistivetechnology">Assistive Technology</a>
+    </div>
+    <div class="section">
+      <a href="#feedback">Feedback</a>
+    </div>
   </div>
 
-  <div class="content">
+  <div class="col s9">
+    <h3>Library Catalogue Accessibility</h3>
+
     <h4 id="committedtoaccessibility">Committed to Accessibility</h4>
     <p>We are committed to improving the accessibility of the library catalogue to all users. Accessibility is reviewed as part of the continual development of the catalogue,
       and feedback from users is welcomed via the link at the top of the page. The catalogue is developed to conform to the
@@ -65,10 +89,11 @@
     <h4 id="feedback">Feedback</h4>
     <p>We welcome <a href="feedback.html" title="Click on this link to give us feedback">feedback</a> from any user to help us continue to improve the accessibility of the library catalogue.</p>
   </div>
+</div>
 
-  <footer>
+<footer>
 
-  </footer>
+</footer>
 </body>
 
 </html>

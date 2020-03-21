@@ -2,12 +2,15 @@
 
   include('Library DB/db_connect.php');
 
+
   if(isset($_POST['login'])){
 
     if(empty($_POST['user'])){
       echo "This field cannot be left empty.";
     }else{
-      $user =  ($_POST['user']);
+
+      echo $_POST['user'];
+      $user = mysqli_real_escape_string($conn, $_POST['user']);
       $sql = "SELECT * from Member where MemberID = $user";
       $result = mysqli_query($conn, $sql);
 
@@ -16,6 +19,7 @@
         }elseif(mysqli_num_rows($result) == 0){
           echo "Unknown User, please try again.";
         }else{
+        session_unset();
         $id = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
         print_r($id);
@@ -28,38 +32,56 @@
 
 
 ?>
-
-
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<link rel="stylesheet" href="css/main.css" type="text/css">
-<link rel="stylesheet" href="css/login.css" type="text/css">
+
 <head>
-  <meta charset="utf-8">
+  <html lang="en" dir="ltr">
   <title>Library Catalogue Login</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<nav>
+  <div class="nav-wrapper purple darken-4">
+    <!-- <a href="#!" class="brand-logo center">Logo</a> -->
+    <ul class="left hide-on-med-and-down">
+      <li><a href="index.php">Home</a></li>
+      <li><a href="accessibility.php">Accessibility</a></li>
+      <li><a href="feedback.php">Feedback</a></li>
+      <li><a href="#LibraryWeb">Library Website</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#help">Help</a></li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="login.php" class="active" id="account">My Account</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <header>
-    <div class="nav">
-      <a href="index.php">Home</a>
-      <a href="accessibility.php">Accessibility</a>
-      <a href="feedback.php">Feedback</a>
-      <a href="#LibraryWeb">Library Website</a>
-      <a href="#contact">Contact Us</a>
-      <a href="#help">Help</a>
-      <a class="live" id="account">My Account</a>
-    </div>
-  </header>
+<div class="container">
 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-    <div>
-      <label for="user">Username</label>
-      <input type="text" placeholder="Student Number" name="user" id="user">
-    </div>
-    <button type="submit" name="login">Login</button>
-  </form>
+  <div class="row">
+
+    <h1>Library Catalogue - My Account</h1>
+
+    <p>Enter your Library Number to log in and access your information.</p>
+
+    <form class="col s12" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" name="user">
+          <label for="user" class="active">Library Number</label>
+        </div>
+      </div>
+      <button type="submit" name="login">Login</button>
+    </form>
+  </div>
+</div>
+
+
 
 </body>
 
