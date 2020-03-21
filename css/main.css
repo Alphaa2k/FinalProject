@@ -1,25 +1,12 @@
-body{
-  margin: 0;
-  font-family: sans-serif;
-}
-
-.nav{
-    background-color: lightgrey;
-    overflow: hidden;
-    display: block;
-    text-align: center;
-}
-
-.nav a{
-  float: left;
+form{
   text-align: center;
-  text-decoration: none;
-  padding: 10px 10px;
+}
+
+input{
+  width: 50%;
 }
 
 #account{
-  float: right;
-  padding: 10px 20px 10px 10px;
   font-weight: bold;
 }
 
