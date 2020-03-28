@@ -44,9 +44,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+var elems = document.querySelectorAll('.sidenav');
+var instances = M.Sidenav.init(elems, {});
+});
+</script>
+
 <nav>
   <div class="nav-wrapper purple darken-4">
     <!-- <a href="#!" class="brand-logo center">Logo</a> -->
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="left hide-on-med-and-down">
       <li><a href="index.php">Home</a></li>
       <li><a href="accessibility.php">Accessibility</a></li>
@@ -56,11 +64,20 @@
       <li><a href="#help">Help</a></li>
     </ul>
     <ul class="right hide-on-med-and-down">
-      <li><a href="login.php" class="active" id="account">My Account</a></li>
+      <li class="active"><a id="account">My Account</a></li>
     </ul>
   </div>
 </nav>
 
+<ul class="sidenav" id="mobile-demo">
+  <li class="active"><a>Home</a></li>
+  <li><a href="accessibility.php">Accessibility</a></li>
+  <li><a href="feedback.php">Feedback</a></li>
+  <li><a href="#LibraryWeb">Library Website</a></li>
+  <li><a href="#contact">Contact Us</a></li>
+  <li><a href="#help">Help</a></li>
+  <li class="active"><a id="account">My Account</a></li>
+ </ul>
 <div class="container">
 
   <div class="row">

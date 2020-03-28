@@ -7,7 +7,7 @@
       echo "<p>This field cannot be left empty.</p>";
     }else{
       $schqry = mysqli_real_escape_string($conn, $_POST['search']);
-      $sql = "SELECT b.BookID, b.Title, b.ISBN, b.Genre, b.Paperback, b.Published, b.Description, a.fName, a.lName from `author` a JOIN `book` b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%'";
+      $sql = "SELECT b.*, a.fName, a.lName from `author` a JOIN `book` b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%'";
       $query = mysqli_query($conn, $sql);
       $resultsnum = mysqli_num_rows($query);
 
@@ -55,9 +55,9 @@ var instances = M.Sidenav.init(elems, {});
 <nav>
   <div class="nav-wrapper purple darken-4">
     <!-- <a href="#!" class="brand-logo center">Logo</a> -->
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="left hide-on-med-and-down">
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <li><a class="active">Home</a></li>
+      <li class="active"><a>Home</a></li>
       <li><a href="accessibility.php">Accessibility</a></li>
       <li><a href="feedback.php">Feedback</a></li>
       <li><a href="#LibraryWeb">Library Website</a></li>
@@ -71,7 +71,7 @@ var instances = M.Sidenav.init(elems, {});
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li><a class="active">Home</a></li>
+  <li class="active"><a>Home</a></li>
   <li><a href="accessibility.php">Accessibility</a></li>
   <li><a href="feedback.php">Feedback</a></li>
   <li><a href="#LibraryWeb">Library Website</a></li>
