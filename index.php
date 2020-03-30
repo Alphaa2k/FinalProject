@@ -31,6 +31,31 @@
     }
   }
 
+  if(isset($_POST['searchbtndb'])) {
+    if(empty($_POST['search'])){
+      echo "<p>This field cannot be left empty.</p>";
+    }else{
+      $schqry = mysqli_real_escape_string($conn, $_POST['search']);
+      $sql = "SELECT * from academicdb WHERE Name LIKE '%$schqry%'";
+      $query = mysqli_query($conn, $sql);
+      $resultsnum = mysqli_num_rows($query);
+
+      if($resultsnum == 0){
+        echo "<p>Your Search Query has returned no results </p>";
+      }else{
+        $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+        session_start();
+        $_SESSION['results'] = $results;
+        $_SESSION['schqry'] = $schqry;
+        $_SESSION['resultnum'] = $resultsnum;
+
+        mysqli_free_result($results);
+        header('Location: searchdb.php');
+      }
+    }
+  }
+
   if(isset($_POST['advbtn'])) {
     if(empty($_POST['allnames']) && empty($_POST['author'])){
       echo "<p>At least one field must be filled.</p>";
@@ -84,15 +109,15 @@
 </head>
 
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-var elems = document.querySelectorAll('.sidenav');
-var instances = M.Sidenav.init(elems, {});
-});
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
+  });
 
-document.addEventListener('DOMContentLoaded', function() {
-var elems = document.querySelectorAll('.modal');
-var instances = M.Modal.init(elems);
-});
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
 </script>
 
 <nav>
@@ -121,7 +146,7 @@ var instances = M.Modal.init(elems);
   <li><a href="#contact">Contact Us</a></li>
   <li><a href="#help">Help</a></li>
   <li><a href="login.php" id="account">My Account</a></li>
- </ul>
+</ul>
 
 
 <div class="container">
@@ -131,15 +156,18 @@ var instances = M.Modal.init(elems);
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
       <input type="input" class="searchbar" name="search" placeholder="Search Books in the Catalogue">
       <button type="submit" name="searchbtn" id="search">Search</button>
+      <button type="submit" name="searchbtndb" id="search">Search Databases</button>
     </form>
-      <button data-target="modal1" class="btn modal-trigger">Advanced Search</button>
+    <button data-target="modal1" class="btn modal-trigger">Advanced Search</button>
+
   </div>
+
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Advanced Search</h4>
-        <form class="col s12" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+      <form class="col s12" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
         <h6 class="left-align">Find Books With...</h6>
 
         <div class="row">
@@ -158,7 +186,7 @@ var instances = M.Modal.init(elems);
         </div>
     </div>
     <div class="modal-footer">
-      <Button type="submit" name="advbtn" class="modal-close waves-effect waves-green btn-flat">Search</a>
+      <button type="submit" name="advbtn" class="modal-close waves-effect waves-green btn-flat">Search</button>
       </form>
     </div>
   </div>
@@ -168,25 +196,25 @@ var instances = M.Modal.init(elems);
     <h4>Opening Times</h4>
     <div class="row">
 
-    <div class="col s4">
-      <h6>Library:</h6>
-      <p>Monday to Sunday: 24 Hours</p>
-    </div>
-
-    <div class="col s4">
-      <h6>Library Help Desk:</h6>
-      <p>Monday to Friday: 9am - 9pm</p>
-      <p>Saturday and Sunday: 10am - 4pm</p>
-    </div>
-
-    <div class="col s4">
-      <h6>IT Help Desk:</h6>
-      <li>Monday to Sunday: 8am - Midnight</li>
-    </div>
-
+      <div class="col s4">
+        <h6>Library:</h6>
+        <p>Monday to Sunday: 24 Hours</p>
       </div>
-  </footer>
+
+      <div class="col s4">
+        <h6>Library Help Desk:</h6>
+        <p>Monday to Friday: 9am - 9pm</p>
+        <p>Saturday and Sunday: 10am - 4pm</p>
+      </div>
+
+      <div class="col s4">
+        <h6>IT Help Desk:</h6>
+        <li>Monday to Sunday: 8am - Midnight</li>
+      </div>
+
     </div>
+  </footer>
+</div>
 </body>
 
 </html>
