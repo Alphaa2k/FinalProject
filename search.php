@@ -86,7 +86,7 @@
   <link rel="stylesheet" href="css/search.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
-    <?php echo "Search Results for ". $schqry;?>
+    <?php if($schqry=='NULL'){echo "Search Results";} else {echo "Search Results for " . $schqry;} ;?>
   </title>
 </head>
 
@@ -133,7 +133,7 @@
    </ul>
 
 
-
+  <a class="waves-effect waves-light btn" href="index.php"><i class="material-icons left">arrow_back</i>Back to Search</a>
   <div class="row">
     <div class="col s3 grey lighten-3">
       <!-- Grey navigation panel -->
