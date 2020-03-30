@@ -1,7 +1,9 @@
 <?php
 
   include('Library DB/db_connect.php');
-
+  if(session_start()){
+    session_destroy();
+  }
 
   if(isset($_POST['login'])){
 
