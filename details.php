@@ -3,10 +3,10 @@
   include('Library DB/db_connect.php');
   session_start();
 
+  if(isset($_SESSION['id'])){
+    $account = $_SESSION['id']['MemberID'];
+  }
 
-  $account = $_SESSION['id']['MemberID'];
-
-  echo $account;
   echo $_GET['id'];
 
   if(isset($_GET['id'])){
@@ -24,7 +24,7 @@
   }
 
   if(isset($_POST['reserve'])){
-    if(isset($_GET['id']) && empty($account) == false){
+    if(isset($_GET['id']) && !empty($account)){
       $bookid = $_GET['id'];
       $sql = "INSERT INTO reservation (MemberID, BookID, ResExpire) SELECT * FROM (SELECT $account, $bookid , CURRENT_DATE() + 10) as tmp WHERE NOT EXISTS(SELECT BookID from reservation where BookID = $bookid)";
       if(mysqli_query($conn, $sql)){
@@ -37,9 +37,8 @@
           echo "Error: " . mysqli_error($conn);
         }
       }else{
-        echo "Nothing happened.";
         $_SESSION['referer'] = $_SERVER['HTTP_REFERER'];
-        // header('Location: auth.php');
+        header('Location: auth.php');
         exit;
       }
     }
