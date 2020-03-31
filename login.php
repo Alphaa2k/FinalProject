@@ -63,7 +63,7 @@ var instances = M.Sidenav.init(elems, {});
       <li><a href="feedback.php">Feedback</a></li>
       <li><a href="#LibraryWeb">Library Website</a></li>
       <li><a href="#contact">Contact Us</a></li>
-      <li><a href="#help">Help</a></li>
+      <li><a href="help.php">Help</a></li>
     </ul>
     <ul class="right hide-on-med-and-down">
       <li class="active"><a id="account">My Account</a></li>

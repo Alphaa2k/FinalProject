@@ -92,7 +92,7 @@
     <li><a href="feedback.php">Feedback</a></li>
     <li><a href="#LibraryWeb">Library Website</a></li>
     <li><a href="#contact">Contact Us</a></li>
-    <li><a href="#help">Help</a></li>
+    <li><a href="help.php">Help</a></li>
     <li><a href="login.php" id="account">My Account</a></li>
    </ul>
 
