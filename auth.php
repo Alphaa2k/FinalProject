@@ -1,20 +1,22 @@
 <?php
 
+  $errors = array('field' =>'', 'user'=>'');
+
   include('Library DB/db_connect.php');
   session_start();
 
   if(isset($_POST['login'])){
 
     if(empty($_POST['user'])){
-      echo "This field cannot be left empty.";
+      $errors['field'] = "This field cannot be left empty.";
     }else{
       $user = mysqli_real_escape_string($conn, $_POST['user']);
       $sql = "SELECT * from Member where MemberID = $user";
       $result = mysqli_query($conn, $sql);
       if ($result == false) {
-        echo "Unknown User, please try again.";
+        $errors['user'] = "Unknown User, please try again.";
       }elseif(mysqli_num_rows($result) == 0){
-        echo "Unknown User, please try again.";
+        $errors['user'] = "Unknown User, please try again.";
       }else{
         $id = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
@@ -80,6 +82,8 @@ var instances = M.Sidenav.init(elems, {});
     <p>Please enter your Library Number before continuing.</p>
 
     <form class="col s12" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+      <div class="helper-text red-text"><?php echo $errors['field']; ?></div>
+      <div class="helper-text red-text"><?php echo $errors['user'];  ?></div>
       <div class="row">
         <div class="input-field col s12">
           <input type="text" name="user">

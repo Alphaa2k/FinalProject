@@ -5,7 +5,6 @@
 
   if(isset($_SESSION['id'])){
     $account = $_SESSION['id']['MemberID'];
-    echo $account;
   }
 
   if(isset($_GET['id'])){

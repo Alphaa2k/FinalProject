@@ -1,5 +1,7 @@
 <?php
 
+  $errors = array('search' =>'', 'results'=>'');
+
   include('Library DB/db_connect.php');
 
   if(session_start()){
@@ -8,7 +10,7 @@
 
   if(isset($_POST['searchbtn'])) {
     if(empty($_POST['search'])){
-      echo "<p>This field cannot be left empty.</p>";
+      $errors['search'] = "<p>This field cannot be left empty.</p>";
     }else{
       $schqry = mysqli_real_escape_string($conn, $_POST['search']);
       $sql = "SELECT b.*, a.fName, a.lName from `author` a JOIN `book` b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%'";
@@ -16,7 +18,7 @@
       $resultsnum = mysqli_num_rows($query);
 
       if($resultsnum == 0){
-        echo "<p>Your Search Query has returned no results </p>";
+        $errors['results'] = "<p>Your Search Query has returned no results </p>";
       }else{
         $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -33,7 +35,7 @@
 
   if(isset($_POST['searchbtndb'])) {
     if(empty($_POST['search'])){
-      echo "<p>This field cannot be left empty.</p>";
+      $errors['search'] = "<p>This field cannot be left empty.</p>";
     }else{
       $schqry = mysqli_real_escape_string($conn, $_POST['search']);
       $sql = "SELECT * from academicdb WHERE Name LIKE '%$schqry%'";
@@ -41,7 +43,7 @@
       $resultsnum = mysqli_num_rows($query);
 
       if($resultsnum == 0){
-        echo "<p>Your Search Query has returned no results </p>";
+        $errors['results'] = "<p>Your Search Query has returned no results </p>";
       }else{
         $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -58,7 +60,7 @@
 
   if(isset($_POST['advbtn'])) {
     if(empty($_POST['allnames']) && empty($_POST['author'])){
-      echo "<p>At least one field must be filled.</p>";
+      $errors['search'] = "<p>At least one field must be filled.</p>";
     }else{
       if(!empty($_POST['allnames'])){
         $schqry = mysqli_real_escape_string($conn, $_POST['allnames']);
@@ -77,7 +79,7 @@
       $resultsnum = mysqli_num_rows($query);
 
       if($resultsnum == 0){
-        echo "<p>Your Search Query has returned no results </p>";
+        $errors['results'] = "<p>Your Search Query has returned no results </p>";
       }else{
         $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -156,9 +158,13 @@
 
   <div class="searchcontent">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-      <input type="input" class="searchbar" name="search" placeholder="Search Books in the Catalogue">
-      <button type="submit" name="searchbtn" id="search">Search</button>
-      <button type="submit" name="searchbtndb" id="search">Search Databases</button>
+        <div class="helper-text red-text"><?php echo $errors['search'] ?></div>
+        <div class="helper-text red-text"><?php echo $errors['results'] ?></div>
+        <div class="row">
+          <input type="input" class="searchbar" name="search" placeholder="Search Books in the Catalogue">
+          <button type="submit" name="searchbtn" id="search">Search</button>
+          <button type="submit" name="searchbtndb" id="search">Search Databases</button>
+        </div>
     </form>
     <button data-target="modal1" class="btn modal-trigger">Advanced Search</button>
 
@@ -198,20 +204,20 @@
     <h4>Opening Times</h4>
     <div class="row">
 
-      <div class="col s4">
+      <div class="col s4 center-align">
         <h6>Library:</h6>
         <p>Monday to Sunday: 24 Hours</p>
       </div>
 
-      <div class="col s4">
+      <div class="col s4 center-align">
         <h6>Library Help Desk:</h6>
         <p>Monday to Friday: 9am - 9pm</p>
         <p>Saturday and Sunday: 10am - 4pm</p>
       </div>
 
-      <div class="col s4">
+      <div class="col s4 center-align">
         <h6>IT Help Desk:</h6>
-        <li>Monday to Sunday: 8am - Midnight</li>
+        <p>Monday to Sunday: 8am - Midnight</>
       </div>
 
     </div>
