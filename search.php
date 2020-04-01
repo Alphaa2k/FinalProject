@@ -251,6 +251,7 @@
             </select>
           </div>
           <button type="submit" name="apply">Apply Filters</button>
+          <button type="reset" name="reset">Clear Filters</button>
         </div>
       </form>
     </div>
