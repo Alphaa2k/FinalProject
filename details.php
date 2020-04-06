@@ -80,7 +80,7 @@
       <li><a href="feedback.php">Feedback</a></li>
       <li><a href="#LibraryWeb">Library Website</a></li>
       <li><a href="#contact">Contact Us</a></li>
-      <li><a href="#help">Help</a></li>
+      <li><a href="help.php">Help</a></li>
     </ul>
     <ul class="right hide-on-med-and-down">
       <li><a href="login.php" id="account">My Account</a></li>
@@ -97,6 +97,9 @@
   <li><a href="help.php">Help</a></li>
   <li><a href="login.php" id="account">My Account</a></li>
 </ul>
+<a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back to Results</a>
+
+<div class="container">
 
 <body>
   <h6 class="center-align green-text">
@@ -106,30 +109,50 @@
     <?php echo $notice['failure'] ?>
   </h6>
 
-  <h1>Details on Book</h1>
 
   <?php if($book): ?>
+  <h1>Details on Book</h1>
+
   <form class="" action="<?php echo $_SERVER['PHP_SELF'] . " ?id=" . $_GET['id'];?>" method="POST">
     <div>
-      <img src="<?php echo " DB Images/" . htmlspecialchars($book['Image']);?>" alt="Book Image" width="100" height="150">
+      <img src="<?php echo " DB Images/" . htmlspecialchars($book['Image']);?>" alt="Book Image" class="responsive-img" width="200">
     </div>
-    <h4>
-      <?php echo htmlspecialchars($book['Title']); ?>
-    </h4>
-    <p>
-      <?php echo htmlspecialchars($book['Format']); ?>
-    </p>
-    <p>Author:
-      <?php echo htmlspecialchars($book['fName']) . htmlspecialchars($book['lName']) ?>
-    </p>
-    <p>
-      <?php echo htmlspecialchars($book['Description']) ?>
-    </p>
-    <button type="submit" name="reserve">Reserve</button>
+
+    <table class="highlight responsive-table" >
+      <tbody>
+        <tr>
+          <th>Author:</th>
+          <td>
+            <?php echo htmlspecialchars($book['fName']) . " " . htmlspecialchars($book['lName']) ?>
+          </td>
+        </tr>
+        <tr>
+          <th>ISBN:</th>
+          <td>
+            <?php echo htmlspecialchars($book['ISBN']);?>
+          </td>
+        </tr>
+        <tr>
+          <th>Format:</th>
+          <td>
+            <?php echo htmlspecialchars($book['Format']);?>
+          </td>
+        </tr>
+        <tr>
+          <th>Description:</th>
+          <td>
+            <?php echo htmlspecialchars($book['Description']) ?>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="waves-effect waves-light btn purple darken-4" type="submit" name="reserve">Reserve</button>
   </form>
 
+</div>
   <?php else: ?>
-  <p>Hello World</p>
+  <h3 class="center-align">404: Book Not Found</h3>
 
   <?php endif; ?>
 

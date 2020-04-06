@@ -73,26 +73,34 @@
     <li><a href="feedback.php">Feedback</a></li>
     <li><a href="#LibraryWeb">Library Website</a></li>
     <li><a href="#contact">Contact Us</a></li>
-    <li><a href="#help">Help</a></li>
+    <li><a href="help.php">Help</a></li>
     <li><a href="login.php" id="account">My Account</a></li>
    </ul>
+   <a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back to Results</a>
 
-
-    <h1>Details on Academic Database</h1>
 
       <?php if($acadb): ?>
+    <h1>Details on Academic Database</h1>
 
         <div>
           <img src="<?php echo " DB Images/" . htmlspecialchars($book['Image']);?>" alt="Book Image" width="100" height="150">
         </div>
         <h4><?php echo htmlspecialchars($acadb['Name']); ?></h4>
-        <p><?php echo htmlspecialchars($acadb['Description']); ?></p>
 
-        <a href="<?php echo htmlspecialchars($acadb['Link']); ?>"><button type="button" name="reserve">Go to Database</button></a>
+        <table class="highlight responsive-table" >
+          <tbody>
+            <tr>
+              <th>Description:</th>
+              <td>
+                <?php echo htmlspecialchars($acadb['Description']); ?>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-
+        <a href="<?php echo htmlspecialchars($acadb['Link']); ?>"><button type="button" class="waves-effect waves-light btn purple darken-4">Go to Database</button></a>
       <?php else: ?>
-        <p>Hello World</p>
+          <h3 class="center-align">404: Book Not Found</h3>
 
       <?php endif; ?>
 
