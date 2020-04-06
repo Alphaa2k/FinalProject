@@ -30,7 +30,7 @@
         <li><a href="feedback.php">Feedback</a></li>
         <li><a href="#LibraryWeb">Library Website</a></li>
         <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#help">Help</a></li>
+        <li><a href="help.php">Help</a></li>
       </ul>
       <ul class="right hide-on-med-and-down">
         <li><a href="login.php" id="account">My Account</a></li>
@@ -74,8 +74,8 @@
           </div>
         </div>
 
-        <button type="submit" name="button">Submit Feedback</button>
-        <button type="reset" name="button">Clear Form</button>
+        <button type="submit" name="button" class="waves-effect waves-light btn purple darken-4">Submit Feedback</button>
+        <button type="reset" name="button" class="waves-effect waves-light btn purple darken-4">Clear Form</button>
       </form>
     </div>
 

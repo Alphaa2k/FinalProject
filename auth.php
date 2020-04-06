@@ -69,9 +69,10 @@ var instances = M.Sidenav.init(elems, {});
   <li><a href="feedback.php">Feedback</a></li>
   <li><a href="#LibraryWeb">Library Website</a></li>
   <li><a href="#contact">Contact Us</a></li>
-  <li><a href="#help">Help</a></li>
+  <li><a href="help.php">Help</a></li>
   <li><a href="login.php" id="account">My Account</a></li>
  </ul>
+<a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back to Details</a>
 
 <div class="container">
 
@@ -90,7 +91,7 @@ var instances = M.Sidenav.init(elems, {});
           <label for="user" class="active">Library Number</label>
         </div>
       </div>
-      <button type="submit" name="login">Login</button>
+      <button type="submit" name="login" class="waves-effect waves-light btn purple darken-4">Login</button>
     </form>
   </div>
 </div>

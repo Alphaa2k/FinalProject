@@ -128,12 +128,12 @@
     <li><a href="feedback.php">Feedback</a></li>
     <li><a href="#LibraryWeb">Library Website</a></li>
     <li><a href="#contact">Contact Us</a></li>
-    <li><a href="#help">Help</a></li>
+    <li><a href="help.php">Help</a></li>
     <li><a href="login.php" id="account">My Account</a></li>
    </ul>
 
 
-  <a class="waves-effect waves-light btn" href="index.php"><i class="material-icons left">arrow_back</i>Back to Search</a>
+  <a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back to Search</a>
   <div class="row">
     <div class="col s3 grey lighten-3">
       <!-- Grey navigation panel -->
@@ -250,8 +250,8 @@
             mysqli_free_result($query);?>
             </select>
           </div>
-          <button type="submit" name="apply">Apply Filters</button>
-          <button type="reset" name="reset">Clear Filters</button>
+          <button type="submit" name="apply" class="waves-effect waves-light btn purple darken-4">Apply Filters</button>
+          <button type="reset" name="reset" class="waves-effect waves-light btn purple darken-4">Clear Filters</button>
         </div>
       </form>
     </div>

@@ -162,11 +162,11 @@
         <div class="helper-text red-text"><?php echo $errors['results'] ?></div>
         <div class="row">
           <input type="input" class="searchbar" name="search" placeholder="Search Books in the Catalogue">
-          <button type="submit" name="searchbtn" id="search">Search</button>
-          <button type="submit" name="searchbtndb" id="search">Search Databases</button>
+          <button type="submit" name="searchbtn" id="search" class="waves-effect waves-light btn purple darken-4">Search</button>
+          <button type="submit" name="searchbtndb" id="search" class="waves-effect waves-light btn purple darken-4">Search Databases</button>
         </div>
     </form>
-    <button data-target="modal1" class="btn modal-trigger">Advanced Search</button>
+    <button data-target="modal1" class="btn modal-trigger purple darken-4">Advanced Search</button>
 
   </div>
 
