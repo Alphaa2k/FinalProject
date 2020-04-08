@@ -97,7 +97,7 @@
   <li><a href="help.php">Help</a></li>
   <li><a href="login.php" id="account">My Account</a></li>
 </ul>
-<a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back to Results</a>
+<a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back</a>
 
 <div class="container">
 

@@ -101,7 +101,7 @@
 
       <div class="col s10">
         <label>Title:</label>
-        <h6><a href="details.php?id=<?php echo $afine['BookID'];?>">
+        <h6><a href="details.php?id=<?php echo $loan['BookID'];?>">
             <?php echo htmlspecialchars($loan['Title']);?>
           </a></h6>
 
