@@ -166,7 +166,7 @@
           <button type="submit" name="searchbtndb" id="search" class="waves-effect waves-light btn purple darken-4">Search Databases</button>
         </div>
     </form>
-    <button data-target="modal1" class="btn modal-trigger purple darken-4">Advanced Search</button>
+    <button data-target="modal1" class="btn modal-trigger purple darken-4">Advanced Search Books</button>
 
   </div>
 
