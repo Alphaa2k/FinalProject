@@ -135,7 +135,7 @@
 
   <a class="waves-effect waves-light btn purple darken-4" href="index.php"><i class="material-icons left">arrow_back</i>Back to Search</a>
   <div class="row">
-    <div class="col s3 grey lighten-3">
+    <div class="col s3 m4 l3 grey lighten-3">
       <!-- Grey navigation panel -->
       <h5 class="sidetitle">Search Filters</h5>
 
@@ -257,7 +257,7 @@
     </div>
 
 
-    <div class="col s9">
+    <div class="col s9 m8 l9">
         <h3>
           <?php echo "Your search query returned ".$resultsnum." results."; ?>
         </h3>

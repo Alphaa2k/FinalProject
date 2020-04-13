@@ -29,7 +29,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Details</title>
+    <title>Academic Database Details</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -78,13 +78,11 @@
    </ul>
    <a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back to Results</a>
 
+  <div class="container">
 
       <?php if($acadb): ?>
     <h1>Details on Academic Database</h1>
 
-        <div>
-          <img src="<?php echo " DB Images/" . htmlspecialchars($book['Image']);?>" alt="Book Image" width="100" height="150">
-        </div>
         <h4><?php echo htmlspecialchars($acadb['Name']); ?></h4>
 
         <table class="highlight responsive-table" >
@@ -98,7 +96,11 @@
           </tbody>
         </table>
 
-        <a href="<?php echo htmlspecialchars($acadb['Link']); ?>"><button type="button" class="waves-effect waves-light btn purple darken-4">Go to Database</button></a>
+      <div class="row">
+        <a href="<?php echo "http://" . htmlspecialchars($acadb['Link']); ?>"><button type="button" class="waves-effect waves-light btn purple darken-4">Go to Database</button></a>
+      </div>
+
+    </div>
       <?php else: ?>
           <h3 class="center-align">404: Book Not Found</h3>
 

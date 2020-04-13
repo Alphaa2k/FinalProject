@@ -73,14 +73,13 @@
 
   <a class="waves-effect waves-light btn purple darken-4" href="index.php"><i class="material-icons left">arrow_back</i>Back to Search</a>
   <div class="row">
-    <div class="col s3 grey lighten-3">
+    <div class="col s3 m4 l3 grey lighten-3">
       <!-- Grey navigation panel -->
       <h5 class="sidetitle">Search Filters</h5>
 
       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <div class="divider"></div>
         <div class="section">
-
           <h5>Academic Datbase</h5>
           <p>
             <label>
@@ -93,10 +92,9 @@
           <button type="submit" name="apply" class="waves-effect waves-light btn purple darken-4" disabled>Clear Filters</button>
         </div>
       </form>
-    </div>
 
 
-    <div class="col s9">
+    <div class="col s9 m8 l9">
         <h3>
           <?php echo "Your search query returned ".$resultsnum." results."; ?>
         </h3>
@@ -110,10 +108,6 @@
 
 
     <div class="row">
-
-        <div class="col s2">
-          <img src="<?php echo " DB Images/" . htmlspecialchars($result['Image']);?>" class="responsive-img" alt="Book Image">
-        </div>
 
         <div class="col s10">
           <h4><a href="detailsdb.php?id=<?php echo $result['ID'];?>">

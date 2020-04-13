@@ -23,8 +23,8 @@
   <nav>
     <div class="nav-wrapper purple darken-4">
       <!-- <a href="#!" class="brand-logo center">Logo</a> -->
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="left hide-on-med-and-down">
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <li><a class="active">Home</a></li>
         <li><a href="accessibility.php">Accessibility</a></li>
         <li><a href="feedback.php">Feedback</a></li>

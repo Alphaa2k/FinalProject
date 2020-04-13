@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/access.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,7 +51,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col s2">
+    <div class="col s3 m3 l4">
       <h5>Table of Contents</h5>
       <div class="section">
         <a href="#committedtoaccessibility">Committed to Accessibility</a>
@@ -72,7 +73,7 @@
       </div>
     </div>
 
-    <div class="col s10">
+    <div class="col s9 m9 l8">
       <h3>Library Catalogue Accessibility</h3>
 
       <h4 id="committedtoaccessibility">Committed to Accessibility</h4>

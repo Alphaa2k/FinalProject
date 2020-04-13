@@ -52,7 +52,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Details</title>
+  <title>Book Details</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
@@ -118,7 +118,7 @@
       <img src="<?php echo " DB Images/" . htmlspecialchars($book['Image']);?>" alt="Book Image" class="responsive-img" width="200">
     </div>
 
-    <table class="highlight responsive-table" >
+    <table class="highlight responsive-table">
       <tbody>
         <tr>
           <th>Author:</th>
