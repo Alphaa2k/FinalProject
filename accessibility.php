@@ -51,7 +51,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col s3 m3 l4">
+    <div class="col s4 m3 l4">
       <h5>Table of Contents</h5>
       <div class="section">
         <a href="#committedtoaccessibility">Committed to Accessibility</a>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="col s9 m9 l8">
+    <div class="col s8 m9 l8">
       <h3>Library Catalogue Accessibility</h3>
 
       <h4 id="committedtoaccessibility">Committed to Accessibility</h4>

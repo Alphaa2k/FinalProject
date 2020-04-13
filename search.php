@@ -135,7 +135,7 @@
 
   <a class="waves-effect waves-light btn purple darken-4" href="index.php"><i class="material-icons left">arrow_back</i>Back to Search</a>
   <div class="row">
-    <div class="col s3 m4 l3 grey lighten-3">
+    <div class="col s4 m4 l3 grey lighten-3">
       <!-- Grey navigation panel -->
       <h5 class="sidetitle">Search Filters</h5>
 
@@ -257,7 +257,7 @@
     </div>
 
 
-    <div class="col s9 m8 l9">
+    <div class="col s8 m8 l9">
         <h3>
           <?php echo "Your search query returned ".$resultsnum." results."; ?>
         </h3>
@@ -272,11 +272,11 @@
 
     <div class="row">
 
-        <div class="col s2">
+        <div class="col s3 s3 l4">
           <img src="<?php echo " DB Images/" . htmlspecialchars($result['Image']);?>" class="responsive-img" alt="Book Image">
         </div>
 
-        <div class="col s10">
+        <div class="col s9 m9 l10">
           <h4><a href="details.php?id=<?php echo $result['BookID'];?>">
             <?php echo htmlspecialchars($result['Title']);?>
           </a></h4>
