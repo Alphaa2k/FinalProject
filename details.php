@@ -101,60 +101,54 @@
 
 <div class="container">
 
-<body>
-  <h6 class="center-align green-text">
-    <?php echo $notice['success'] ?>
-  </h6>
-  <h6 class="center-align red-text">
-    <?php echo $notice['failure'] ?>
-  </h6>
+  <body>
+    <h6 class="center-align green-text">
+      <?php echo $notice['success'] ?>
+    </h6>
+    <h6 class="center-align red-text">
+      <?php echo $notice['failure'] ?>
+    </h6>
 
 
-  <?php if($book): ?>
-  <h1>Details on Book</h1>
+    <?php if($book): ?>
+    <form action="<?php echo $_SERVER['PHP_SELF'] . " ?id=" . $_GET['id'];?>" method="POST">
+      <div class="row">
 
-  <form class="" action="<?php echo $_SERVER['PHP_SELF'] . " ?id=" . $_GET['id'];?>" method="POST">
-    <div>
-      <img src="<?php echo " DB Images/" . htmlspecialchars($book['Image']);?>" alt="Book Image" class="responsive-img" width="200">
-    </div>
+        <div class="col s3 s3 l4">
+          <img src="<?php echo " DB Images/" . htmlspecialchars($book['Image']);?>" alt="Book Image" class="responsive-img" width="270">
+        </div>
 
-    <table class="highlight responsive-table">
-      <tbody>
-        <tr>
-          <th>Author:</th>
-          <td>
-            <?php echo htmlspecialchars($book['fName']) . " " . htmlspecialchars($book['lName']) ?>
-          </td>
-        </tr>
-        <tr>
-          <th>ISBN:</th>
-          <td>
-            <?php echo htmlspecialchars($book['ISBN']);?>
-          </td>
-        </tr>
-        <tr>
-          <th>Format:</th>
-          <td>
-            <?php echo htmlspecialchars($book['Format']);?>
-          </td>
-        </tr>
-        <tr>
-          <th>Description:</th>
-          <td>
-            <?php echo htmlspecialchars($book['Description']) ?>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        <h4 class="left-align">
+          <?php echo htmlspecialchars($book['Title']);?>
+        </h4>
 
-    <button class="waves-effect waves-light btn purple darken-4" type="submit" name="reserve">Reserve</button>
-  </form>
+        <div class="left-align">
+          <p><i><?php echo "By " . htmlspecialchars($book['fName']) . " " . htmlspecialchars($book['lName']) ?></i></p>
 
+          <label>ISBN:</label>
+          <p><?php echo htmlspecialchars($book['ISBN']);?></p>
+
+          <label>Format:</label>
+          <p><?php echo htmlspecialchars($book['Format']);?></p>
+
+          <label>Description:</label>
+          <p class="valign-wrapper"><?php echo htmlspecialchars($book['Description']) ?></p>
+        </div>
+
+        <div class="left-align">
+          <label>Location:</label>
+          <p>Located in University Library</p>
+        </div>
+
+        <button class="waves-effect waves-light btn purple darken-4" type="submit" name="reserve">Reserve</button>
+      </form>
+  </div>
 </div>
-  <?php else: ?>
-  <h3 class="center-align">404: Book Not Found</h3>
 
-  <?php endif; ?>
+<?php else: ?>
+<h3 class="center-align">404: Book Not Found</h3>
+
+<?php endif; ?>
 
 
 </body>

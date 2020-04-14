@@ -18,9 +18,6 @@
         $authorqry = $_SESSION['authorqry'];
       }
 
-
-
-
   if(isset($_POST['apply'])){
     if(isset($_POST['group4'])) {
       $booktype = $_POST['group4'];
@@ -272,7 +269,7 @@
 
     <div class="row">
 
-        <div class="col s3 s3 l4">
+        <div class="col s3 s3 l2">
           <img src="<?php echo " DB Images/" . htmlspecialchars($result['Image']);?>" class="responsive-img" alt="Book Image">
         </div>
 
@@ -283,13 +280,9 @@
 
           <p><?php echo htmlspecialchars($result['Format']); ?></p>
 
-          <h5><i>
+          <h6><i>
             <?php echo "By " . htmlspecialchars($result['fName']) . " " . htmlspecialchars($result['lName']);; ?>
-          </i></h5>
-
-          <p>
-            <?php echo "ISBN: " . htmlspecialchars($result['ISBN']); ?>
-          </p>
+          </i></h6>
 
           <p>
             <?php echo "[" . htmlspecialchars($result['Published']) . "]"; ?>

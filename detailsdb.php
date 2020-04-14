@@ -27,26 +27,27 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Academic Database Details</title>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/index.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Academic Database Details</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
 
   <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, {});
-  });
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, {});
+    });
   </script>
 
   <nav>
@@ -75,37 +76,37 @@
     <li><a href="#contact">Contact Us</a></li>
     <li><a href="help.php">Help</a></li>
     <li><a href="login.php" id="account">My Account</a></li>
-   </ul>
-   <a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back to Results</a>
+  </ul>
+  <a class="waves-effect waves-light btn purple darken-4" href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Back to Results</a>
 
   <div class="container">
 
-      <?php if($acadb): ?>
-    <h1>Details on Academic Database</h1>
+    <?php if($acadb): ?>
 
-        <h4><?php echo htmlspecialchars($acadb['Name']); ?></h4>
+    <h4>
+      <?php echo htmlspecialchars($acadb['Name']); ?>
+    </h4>
 
-        <table class="highlight responsive-table" >
-          <tbody>
-            <tr>
-              <th>Description:</th>
-              <td>
-                <?php echo htmlspecialchars($acadb['Description']); ?>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      <div class="row">
-        <a href="<?php echo "http://" . htmlspecialchars($acadb['Link']); ?>"><button type="button" class="waves-effect waves-light btn purple darken-4">Go to Database</button></a>
-      </div>
-
+    <div class="center-align">
+      <label>Description:</label>
+      <p class="center-align">
+        <?php echo htmlspecialchars($acadb['Description']) ?>
+      </p>
     </div>
-      <?php else: ?>
-          <h3 class="center-align">404: Book Not Found</h3>
 
-      <?php endif; ?>
+    <div class="row center-align">
+      <a href="<?php echo " http://" . htmlspecialchars($acadb['Link']); ?>"><button type="button" class="waves-effect waves-light btn purple darken-4">Go to Database</button></a>
+    </div>
+
+  </div>
 
 
-  </body>
+  <?php else: ?>
+  <h3 class="center-align">404: Book Not Found</h3>
+
+  <?php endif; ?>
+
+
+</body>
+
 </html>
