@@ -12,20 +12,24 @@
     if(empty($_POST['user'])){
       $errors['field'] = "This field cannot be left empty.";
     }else{
-      $user = mysqli_real_escape_string($conn, $_POST['user']);
-      $sql = "SELECT * from Member where MemberID = $user";
-      $result = mysqli_query($conn, $sql);
-      if ($result == false) {
-        $errors['user'] = "Unknown User, please try again.";
-      }elseif(mysqli_num_rows($result) == 0){
-        $errors['user'] = "Unknown User, please try again.";
+      if(!preg_match('/^[0-9][0-9][0-9][0-9][0-9][0-9]/', $_POST['user'])){
+        $errors['field'] = "This field must contain 6 digit numbers only.";
       }else{
-        session_unset();
-        $id = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-        session_start();
-        $_SESSION['id'] = $id;
-        header('Location: account.php');
+        $user = mysqli_real_escape_string($conn, $_POST['user']);
+        $sql = "SELECT * from Member where MemberID = $user";
+        $result = mysqli_query($conn, $sql);
+        if ($result == false) {
+          $errors['user'] = "Unknown User, please try again.";
+        }elseif(mysqli_num_rows($result) == 0){
+          $errors['user'] = "Unknown User, please try again.";
+        }else{
+          session_unset();
+          $id = mysqli_fetch_assoc($result);
+          mysqli_free_result($result);
+          session_start();
+          $_SESSION['id'] = $id;
+          header('Location: account.php');
+        }
       }
     }
   }
