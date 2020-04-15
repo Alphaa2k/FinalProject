@@ -11,15 +11,20 @@
 
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
-    $sql = "SELECT * FROM academicdb WHERE ID = '$id'";
+    $sql = mysqli_prepare($conn, "SELECT Name, Link, Description FROM academicdb WHERE ID = ?");
 
-    $query = mysqli_query($conn, $sql);
+    mysqli_stmt_bind_param($sql, "s", $id);
 
-    $acadb = mysqli_fetch_assoc($query);
+    // Execute the statement.
+    mysqli_stmt_execute($sql);
 
-    mysqli_free_result($query);
+    mysqli_stmt_bind_result($sql, $name, $link, $desc);
 
+    // Get the variables from the query.
+    $acadb = mysqli_stmt_fetch($sql);
   }
+
+
 
  ?>
 
@@ -84,18 +89,18 @@
     <?php if($acadb): ?>
 
     <h4>
-      <?php echo htmlspecialchars($acadb['Name']); ?>
+      <?php echo $name; ?>
     </h4>
 
     <div class="center-align">
       <label>Description:</label>
       <p class="center-align">
-        <?php echo htmlspecialchars($acadb['Description']) ?>
+        <?php echo $desc ?>
       </p>
     </div>
 
     <div class="row center-align">
-      <a href="<?php echo " http://" . htmlspecialchars($acadb['Link']); ?>"><button type="button" class="waves-effect waves-light btn purple darken-4">Go to Database</button></a>
+      <a href="<?php echo " http://" . $link ?>"><button type="button" class="waves-effect waves-light btn purple darken-4">Go to Database</button></a>
     </div>
 
   </div>

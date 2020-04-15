@@ -14,14 +14,17 @@
 
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
-    $sql = "SELECT * FROM `book` join `author` on `book`.`AUID`= `author`.`AUID` where `book`.`BookID` = $id";
+    $sql = mysqli_prepare($conn, "SELECT b.image, b.title, a.fName, a.lName, b.ISBN, b.Format, b.Description FROM Book b join Author a on b.`AUID`= a.`AUID` where b.`BookID` = ?");
 
-    $query = mysqli_query($conn, $sql);
+    mysqli_stmt_bind_param($sql, "i", $id);
 
-    $book = mysqli_fetch_assoc($query);
+    // Execute the statement.
+    mysqli_stmt_execute($sql);
 
-    mysqli_free_result($query);
+    mysqli_stmt_bind_result($sql, $image, $title, $first, $last, $isbn, $format, $desc);
 
+    // Get the variables from the query.
+    $book = mysqli_stmt_fetch($sql);
   }
 
   if(isset($_POST['reserve'])){
@@ -111,28 +114,28 @@
 
 
     <?php if($book): ?>
-    <form action="<?php echo $_SERVER['PHP_SELF'] . " ?id=" . $_GET['id'];?>" method="POST">
+    <form action="<?php echo $_SERVER['PHP_SELF'] . "?id=" . htmlspecialchars($_GET['id']);?>" method="POST">
       <div class="row">
 
         <div class="col s3 s3 l4">
-          <img src="<?php echo " DB Images/" . htmlspecialchars($book['Image']);?>" alt="Book Image" class="responsive-img" width="270">
+          <img src="<?php echo " DB Images/" .$image;?>" alt="Book Image" class="responsive-img" width="270">
         </div>
 
         <h4 class="left-align">
-          <?php echo htmlspecialchars($book['Title']);?>
+          <?php echo $title;?>
         </h4>
 
         <div class="left-align">
-          <p><i><?php echo "By " . htmlspecialchars($book['fName']) . " " . htmlspecialchars($book['lName']) ?></i></p>
+          <p><i><?php echo "By " . $first . " " . $last; ?></i></p>
 
           <label>ISBN:</label>
-          <p><?php echo htmlspecialchars($book['ISBN']);?></p>
+          <p><?php echo $isbn; ?></p>
 
           <label>Format:</label>
-          <p><?php echo htmlspecialchars($book['Format']);?></p>
+          <p><?php echo $format?></p>
 
           <label>Description:</label>
-          <p class="valign-wrapper"><?php echo htmlspecialchars($book['Description']) ?></p>
+          <p class="valign-wrapper"><?php echo $desc ?></p>
         </div>
 
         <div class="left-align">
