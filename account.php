@@ -223,7 +223,7 @@
     <div class="section">
       <h5>Loan History</h5>
       <?php
-      $sql4 = "SELECT b.BookID, b.Title, b.Image, b.ISBN, a.fName, a.lName, r.ReturnDate FROM Book b, Author a, return r WHERE b.BookID = r.BookID AND b.AUID = a.AUID AND r.MemberID='".$account['MemberID']."' ";
+      $sql4 = "SELECT b.BookID, b.Title, b.Image, b.ISBN, a.fName, a.lName, h.ReturnDate FROM Book b, Author a, History h WHERE b.BookID = h.BookID AND b.AUID = a.AUID AND h.MemberID='".$account['MemberID']."' ";
       $result4 = mysqli_query($conn, $sql4);
       if (mysqli_num_rows($result4) == 0) {
         echo "You have not returned any loaned books.";
