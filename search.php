@@ -235,7 +235,7 @@
             <select>
               <option value="" disabled selected>Choose your option</option>
             <?php
-              $sqlyear = "SELECT DISTINCT b.Published FROM Book b JOIN Author a on b.AUID=a.AUID where Book.Title LIKE '%$schqry%' OR a.lName LIKE '$authorqry' ORDER BY Published DESC";
+              $sqlyear = "SELECT DISTINCT b.Published FROM Book b JOIN Author a on b.AUID=a.AUID where b.Title LIKE '%$schqry%' OR a.lName LIKE '$authorqry' ORDER BY Published DESC";
               $query = mysqli_query($conn, $sqlyear);
               $years = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -244,7 +244,7 @@
                 <option name="year" value="<?php echo htmlspecialchars($year['Published']); ?>"  <?php if(mysqli_num_rows($query)==1){ echo "disabled";}; ?>><?php echo htmlspecialchars($year['Published']); ?></option>
             <?php }
                 }
-            mysqli_free_result($query);?>
+          ?>
             </select>
           </div>
           <button type="submit" name="apply" class="waves-effect waves-light btn purple darken-4">Apply Filters</button>

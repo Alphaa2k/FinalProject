@@ -27,7 +27,6 @@
         $_SESSION['schqry'] = $schqry;
         $_SESSION['resultnum'] = $resultsnum;
 
-        mysqli_free_result($results);
         header('Location: search.php');
       }
     }
@@ -52,7 +51,6 @@
         $_SESSION['schqry'] = $schqry;
         $_SESSION['resultnum'] = $resultsnum;
 
-        mysqli_free_result($results);
         header('Location: searchdb.php');
       }
     }
@@ -89,7 +87,6 @@
         $_SESSION['resultnum'] = $resultsnum;
         $_SESSION['authorqry'] = $authorqry;
 
-        mysqli_free_result($results);
         header('Location: search.php');
       }
     }
