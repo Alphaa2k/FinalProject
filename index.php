@@ -13,7 +13,7 @@
       $errors['search'] = "<p>This field cannot be left empty.</p>";
     }else{
       $schqry = mysqli_real_escape_string($conn, $_POST['search']);
-      $sql = "SELECT b.*, a.fName, a.lName from `author` a JOIN `book` b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%'";
+      $sql = "SELECT b.*, a.fName, a.lName from Author a JOIN Book b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%'";
       $query = mysqli_query($conn, $sql);
       $resultsnum = mysqli_num_rows($query);
 
@@ -74,7 +74,7 @@
         $authorqry = NULL;
       }
 
-      $sql = "SELECT b.*, a.fName, a.lName from `author` a JOIN `book` b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%' AND a.lName LIKE '$authorqry'";
+      $sql = "SELECT b.*, a.fName, a.lName from Author a JOIN Book b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%' AND a.lName LIKE '$authorqry'";
       $query = mysqli_query($conn, $sql);
       $resultsnum = mysqli_num_rows($query);
 

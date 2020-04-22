@@ -84,7 +84,7 @@
   <div class="section">
     <h5>Loans</h5>
     <?php
-        $sql1 = "SELECT b.BookID, b.Title, b.ISBN, b.Image, i.IssueDate, i.ExpiryDate FROM book b, issue i WHERE b.BookID = i.BookID AND MemberID ='".$account['MemberID']."' ";
+        $sql1 = "SELECT b.BookID, b.Title, b.ISBN, b.Image, i.IssueDate, i.ExpiryDate FROM Book b, Issue i WHERE b.BookID = i.BookID AND MemberID ='".$account['MemberID']."' ";
         $result1 = mysqli_query($conn, $sql1);
 
         if (mysqli_num_rows($result1) == 0) {
@@ -223,7 +223,7 @@
     <div class="section">
       <h5>Loan History</h5>
       <?php
-      $sql4 = "SELECT b.BookID, b.Title, b.Image, b.ISBN, a.fName, a.lName, r.ReturnDate FROM `book` b, `author` a, `return` r WHERE b.BookID = r.BookID AND b.AUID = a.AUID AND r.MemberID='".$account['MemberID']."' ";
+      $sql4 = "SELECT b.BookID, b.Title, b.Image, b.ISBN, a.fName, a.lName, r.ReturnDate FROM Book b, Author a, return r WHERE b.BookID = r.BookID AND b.AUID = a.AUID AND r.MemberID='".$account['MemberID']."' ";
       $result4 = mysqli_query($conn, $sql4);
       if (mysqli_num_rows($result4) == 0) {
         echo "You have not returned any loaned books.";

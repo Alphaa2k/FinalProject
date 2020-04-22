@@ -50,7 +50,7 @@
      }
 
       if($booktype != "" || $newgenre != "" || $author != "" || $year !="" || $paperback !=""){
-      $sql = "SELECT b.*, a.fName, a.lName from `author` a JOIN `book` b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%' AND CONCAT(a.fName, ' ', a.lName) LIKE '%$author%' AND b.Genre LIKE '%$newgenre%' AND b.Published LIKE '%$year%' AND b.Paperback LIKE '%$paperback%' and b.Format LIKE '%$booktype%'";
+      $sql = "SELECT b.*, a.fName, a.lName from Author a JOIN Book b on a.`AUID` = b.`AUID` where b.title LIKE '%$schqry%' AND CONCAT(a.fName, ' ', a.lName) LIKE '%$author%' AND b.Genre LIKE '%$newgenre%' AND b.Published LIKE '%$year%' AND b.Paperback LIKE '%$paperback%' and b.Format LIKE '%$booktype%'";
       $fltres = mysqli_query($conn, $sql);
       $_SESSION['results'] = array();
       if(mysqli_num_rows($fltres) > 0){
@@ -163,7 +163,7 @@
         <div class="section">
           <h5>Book Type</h5>
           <?php
-            $sqlformat = "SELECT DISTINCT b.Format from `book` b JOIN `author` a on b.`AUID` = a.`AUID` where b.title LIKE '%$schqry%' OR a.lName LIKE '$authorqry'";
+            $sqlformat = "SELECT DISTINCT b.Format from Book b JOIN Author a on b.`AUID` = a.`AUID` where b.title LIKE '%$schqry%' OR a.lName LIKE '$authorqry'";
             $query = mysqli_query($conn, $sqlformat);
             $formats = mysqli_fetch_all($query, MYSQLI_ASSOC);
             foreach ($formats as $format) {
@@ -186,7 +186,7 @@
           <h5>Author</h5>
           <label class="radio-inline">
             <?php
-              $sqlauthor = "SELECT DISTINCT fName, lName from `author` JOIN `book` on `author`.AUID = `book`.AUID where `book`.Title LIKE '%$schqry%' OR lName LIKE '$authorqry'";
+              $sqlauthor = "SELECT DISTINCT fName, lName from Author JOIN Book on Author.AUID = Book.AUID where Book.Title LIKE '%$schqry%' OR lName LIKE '$authorqry'";
               $query = mysqli_query($conn, $sqlauthor);
               $authors = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -209,7 +209,7 @@
         <div class="section">
           <h5>Genre</h5>
           <?php
-            $sqlgenre = "SELECT DISTINCT b.Genre from `book` b JOIN `author` a on b.`AUID` = a.`AUID` where b.title LIKE '%$schqry%' OR a.lName LIKE '$authorqry'";
+            $sqlgenre = "SELECT DISTINCT b.Genre from Book b JOIN Author a on b.`AUID` = a.`AUID` where b.title LIKE '%$schqry%' OR a.lName LIKE '$authorqry'";
             $query = mysqli_query($conn, $sqlgenre);
             $genres = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -235,7 +235,7 @@
             <select>
               <option value="" disabled selected>Choose your option</option>
             <?php
-              $sqlyear = "SELECT DISTINCT b.Published FROM `book` b JOIN author a on b.AUID=a.AUID where `book`.Title LIKE '%$schqry%' OR a.lName LIKE '$authorqry' ORDER BY Published DESC";
+              $sqlyear = "SELECT DISTINCT b.Published FROM Book b JOIN Author a on b.AUID=a.AUID where Book.Title LIKE '%$schqry%' OR a.lName LIKE '$authorqry' ORDER BY Published DESC";
               $query = mysqli_query($conn, $sqlyear);
               $years = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
