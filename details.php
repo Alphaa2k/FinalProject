@@ -30,7 +30,7 @@
   if(isset($_POST['reserve'])){
     if(isset($_GET['id']) && !empty($account)){
       $bookid = $_GET['id'];
-      $sql = "INSERT INTO Reservation (MemberID, BookID, ResExpire) SELECT * FROM (SELECT $account, $bookid , CURRENT_DATE() + 10) as tmp WHERE NOT EXISTS(SELECT BookID from Reservation where BookID = $bookid)";
+      $sql = "INSERT INTO Reservation (MemberID, BookID, ResExpire) SELECT * FROM (SELECT $account, $bookid, DATE_ADD(CURRENT_DATE(), INTERVAL 10 DAY)) as tmp WHERE NOT EXISTS(SELECT BookID from Reservation where BookID = $bookid)";
       if(mysqli_query($conn, $sql)){
         if(mysqli_affected_rows($conn) == 0){
           $notice['failure'] = "This book has already been reserved.";
