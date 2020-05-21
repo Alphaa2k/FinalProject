@@ -153,6 +153,11 @@
 <div class="container">
   <h1>Library Catalogue</h1>
 
+  <p class="welcome">Welcome to the Catalogue Home Page. In here you can search for books, eBooks and Academic Databases free for you to access.
+  Please note that if you wish to search for Academic Databases, enter the name of the Database you're looking for (i.e. Engineering Village)
+  and click "Search Databases". Otherwise click "Search" or "Advanced Search Books" to find books. If you need help navigating the catalogue,
+  please click "Help" on the navigation for a guide on how to use the catalogue.</p>
+
   <div class="searchcontent">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <div class="helper-text red-text"><?php echo $errors['search'] ?></div>

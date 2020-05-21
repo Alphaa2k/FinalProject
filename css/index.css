@@ -12,6 +12,10 @@ h1, h4{
   text-align: center;
 }
 
+.welcome{
+  font-size: 12px;
+}
+
 #Adv{
   display: block;
   margin: 10px auto auto auto;
