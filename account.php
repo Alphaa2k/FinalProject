@@ -131,11 +131,11 @@
   <div class="divider"></div>
   <div class="section">
     <h5>Fines</h5>
-    <?php $sql2 = "SELECT f.*, b.BookID, b.Title, b.ISBN, b.Image, i.ExpiryDate from Fine f, Book b, Issue i where f.BookID = b.BookID and f.MemberID = i.MemberID and f.MemberID = '".$account['MemberID']."' ";
+    <?php $sql2 = "SELECT f.BookID, b.Title, b.ISBN, b.Image, i.ExpiryDate, f.Amount from Fine f, Book b, Issue i where i.IssueID = f.IssueID and f.BookID = b.BookID and f.MemberID = i.MemberID and f.MemberID = '".$account['MemberID']."' ";
       $result2 = mysqli_query($conn, $sql2);
-      if (mysqli_num_rows($result2) == 0) {
+      if(mysqli_num_rows($result2) == 0) {
         echo "You have no Fines.";
-      } else{
+      }else{
         $fines = mysqli_fetch_all($result2, MYSQLI_ASSOC);
         mysqli_free_result($result2);
         foreach ($fines as $afine) {
@@ -147,6 +147,7 @@
       </div>
 
       <div class="col s10">
+
         <label>Title</label>
         <h6><a href="details.php?id=<?php echo $afine['BookID'];?>">
             <?php echo htmlspecialchars($afine['Title']);?>
@@ -172,6 +173,7 @@
     <?php }
               }
                 }?>
+
     <div class="divider"></div>
     <div class="section">
       <h5>Reservations</h5>
@@ -241,20 +243,27 @@
 
         <div class="col s10">
 
+          <label>Title:</label>
           <h6><a href="details.php?id=<?php echo $return['BookID'];?>">
-              <?php echo htmlspecialchars($return['BookID']); ?>
+              <?php echo htmlspecialchars($return['Title']); ?>
           </h6></a>
           <p>
-            <?php echo htmlspecialchars($return['Title']); ?>
           </p>
+
+          <label>ISBN:</label>
           <p>
             <?php echo htmlspecialchars($return['ISBN']); ?>
           </p>
+
+          <label>By:</label>
+
           <p>
             <?php echo htmlspecialchars($return['fName']) . " " . htmlspecialchars($return['lName']) ; ?>
           </p>
+
+          <label>Date Returned:</label>
           <p>
-            <?php echo htmlspecialchars($return['ResExpire']); ?>
+            <?php echo htmlspecialchars($return['ReturnDate']); ?>
           </p>
 
         </div>
